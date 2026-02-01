@@ -95,7 +95,7 @@ export function FinalScreen({ onFinish }: FinalScreenProps) {
           <div className="space-y-2">
             <p className="text-3xl font-heading text-charcoal">Happy Valentine's Day, Deeksha.</p>
             <p className="text-2xl font-handwritten text-secondary">Happy Almost-One-Year.</p>
-            <p className="text-xl font-medium pt-4 text-charcoal/60">— Ajith</p>
+            <p className="text-xl font-medium pt-4 text-charcoal/60">Ajith</p>
           </div>
         </motion.div>
 

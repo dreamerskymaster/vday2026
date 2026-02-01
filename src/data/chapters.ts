@@ -21,24 +21,24 @@ export const chapters: ChapterData[] = [
   {
     id: 1,
     title: "The Line We Never Entered",
-    message: "Northeastern Career Fair. Fall 2023. We were both in that line. Neither of us went inside. I didn't know your name. You didn't know mine. But something satisfying happened that day — we existed in the same space, annoyed at the same line, probably thinking the same thing: 'Is this even worth it?'",
+    message: "Northeastern Career Fair. Fall 2024. Hum dono us lambi line mein khade the. Neither of us went inside. Mujhe tumhara naam nahi pata tha, tumhe mera nahi. But ek cheez bahut satisfying thi, hum dono wahi the, us line se pareshan, shayad ek hi cheez soch rahe the: 'Is this even worth it?'",
     interactions: [
       {
         id: '1-1',
-        question: "Be honest — were you actually going to go inside?",
+        question: "Sach batao... were you actually going to go inside?",
         type: 'multiple-choice',
-        options: ["Yes, I was committed", "No, I was already over it", "I don't even remember this 😅"]
+        options: ["Yes, I was committed", "No, pehle hi mann bhar gaya tha", "Mujhe yaad bhi nahi 😅"]
       },
       {
         id: '1-2',
-        question: "How long were you in that line before giving up?",
+        question: "Line mein kitna wait kiya haar maanne se pehle?",
         type: 'slider',
         leftLabel: "5 mins",
         rightLabel: "45+ mins"
       },
       {
         id: '1-3',
-        question: "If you could go back to that line and say one thing to me, what would it be?",
+        question: "Agar aaj wapas us line mein ja paati, toh mujhse kya kehti?",
         type: 'text',
         minLength: 5,
         maxLength: 100
@@ -48,23 +48,23 @@ export const chapters: ChapterData[] = [
   {
     id: 2,
     title: "The App Did Its Job",
-    message: "Then Hinge happened. February 22nd, 2024. I saw your profile and something clicked. The first texts were probably awkward. But here's the thing — I kept coming back to the app just to see if you'd replied.",
+    message: "Phir Hinge hua. February 22nd, 2024. Maine tumhara profile dekha aur kuch click hua. Pehle texts shayad thode awkward the. But point ye hai ki main baar baar app check karta tha ye dekhne ke liye ki tumne reply kiya ya nahi.",
     interactions: [
       {
         id: '2-1',
-        question: "Who texted first?",
+        question: "Pehle text kisne kiya tha?",
         type: 'multiple-choice',
-        options: ["You (Ajith)", "Me (obviously)", "I genuinely don't remember"]
+        options: ["Tumne (Ajith)", "Maine (obviously)", "Yaad nahi yar"]
       },
       {
         id: '2-2',
-        question: "Rate my Hinge profile — be brutal",
+        question: "Mera Hinge profile rate karo... be brutal",
         type: 'rating',
-        maxLength: 5 // number of hearts
+        maxLength: 5
       },
       {
         id: '2-3',
-        question: "What made you actually respond instead of just swiping?",
+        question: "Swipe karne ke baad actually reply kyu kiya?",
         type: 'text',
         minLength: 10,
         maxLength: 150
@@ -74,29 +74,29 @@ export const chapters: ChapterData[] = [
   {
     id: 3,
     title: "Cambridge, Chapter One",
-    message: "Our first real date. Cambridge. I was nervous. Were you? I remember trying to act like I had everything under control. I didn't. But somewhere between the conversations and the walking, I thought — okay, I want to see her again.",
+    message: "Humari pehli real date. Cambridge. Main thoda nervous tha. Tum thi? Mujhe yaad hai main aise act kar raha tha jaise sab control mein hai, par aisa bilkul nahi tha. But baaton aur ghumne ke beech mein, maine socha... okay, I want to see her again.",
     interactions: [
       {
         id: '3-1',
-        question: "How nervous was I? (Your honest read)",
+        question: "Main kitna nervous tha? (Imandari se batao)",
         type: 'multiple-choice',
-        options: ["Cool and collected", "Slightly nervous", "Visibly stressed", "A complete mess pretending to be calm"]
+        options: ["Cool and collected", "Slightly nervous", "Visibly stressed", "Pura mess, bas pretend kar raha tha"]
       },
       {
         id: '3-2',
-        question: "What's one thing you remember from that day that I probably forgot?",
+        question: "Us din ki koi ek baat jo tumhe yaad hai par main shayad bhool gaya hoon?",
         type: 'text',
         minLength: 10,
         maxLength: 200
       },
       {
         id: '3-3',
-        question: "Did you know there would be a second date?",
+        question: "Kya tumhe pata tha ki second date hogi?",
         type: 'conditional',
         options: ["Yes", "No"],
         followUps: {
-          "Yes": "What gave it away?",
-          "No": "What convinced you later?"
+          "Yes": "Kaise pata chala?",
+          "No": "Baad mein kaise maan gayi?"
         }
       }
     ]
@@ -104,82 +104,82 @@ export const chapters: ChapterData[] = [
   {
     id: 4,
     title: "The 'Are We Dating?' Phase",
-    message: "After Cambridge, we kept meeting. And meeting. And meeting. No labels. No pressure. Just two people figuring out if this thing had legs. Spoiler: it did.",
+    message: "Cambridge ke baad hum milte rahe. Baar baar milte rahe. Koi labels nahi, koi pressure nahi. Bas do log ye samajhne ki koshish kar rahe the ki is rishte mein koi baat hai ya nahi. Spoiler: Baat toh thi.",
     interactions: [
       {
         id: '4-1',
-        question: "Rank these from most to least memorable:",
+        question: "Inhe rank karo from most to least memorable:",
         type: 'ranking',
         options: ["Coffee runs", "Late night calls", "Random hangouts", "Planned dates"]
       },
       {
         id: '4-2',
-        question: "At what point did you realize this wasn't just casual anymore?",
+        question: "Kab laga ki ye ab casual nahi raha?",
         type: 'text',
         minLength: 10,
         maxLength: 200
       },
       {
         id: '4-3',
-        question: "Who caught feelings first?",
+        question: "Sabse pehle feelings kisne pakdi?",
         type: 'multiple-choice',
-        options: ["You (Ajith) — obvious", "Me — I'll admit it", "Same time honestly", "Still figuring it out 😏"]
+        options: ["Tumne (Ajith), obvious", "Maine, admit karti hoon", "Dono ne sath mein", "Abhi bhi figure out kar rahe hain 😏"]
       }
     ]
   },
   {
     id: 5,
     title: "Norwalk or Nowhere",
-    message: "Our first roadtrip. Norwalk. You, me, the car, and the open road. This was the test. If we could survive hours in a car together without killing each other, we had a chance. We passed.",
+    message: "Humari pehli roadtrip. Norwalk. Tum, main, car aur khuli sadak. Ye test tha. Agar hum car mein itne ghante bina lade nikal sakte the, toh humara chance tha. Aur humne pass kar liya.",
     interactions: [
       {
         id: '5-1',
-        question: "What song do you think I played the most on that drive?",
+        question: "Us drive pe main kaunsa gaana sabse zyada bajata tha?",
         type: 'text',
         maxLength: 50
       },
       {
         id: '5-2',
-        question: "Rate the drive vibe",
+        question: "Drive ka vibe rate karo",
         type: 'slider',
         leftLabel: "😴",
         rightLabel: "🎉"
       },
       {
         id: '5-3',
-        question: "Best part of that trip?",
+        question: "Trip ka best part kya tha?",
         type: 'multiple-choice',
-        options: ["The drive itself", "The destination", "The conversations", "The snacks (be honest)"]
+        options: ["The drive itself", "The destination", "The conversations", "The snacks (sach bolo)"]
       }
     ]
   },
   {
     id: 6,
     title: "The Hard Part",
-    message: "Then came the distance. 8 months. Different cities. Different schedules. Same FaceTime screen every night. It wasn't easy. But babu, we held on. That counts for something.",
+    message: "Phir distance aaya. 8 months. Alag cities, alag schedules. Bas wahi FaceTime screen har raat. Aasaan nahi tha. But babu, humne haar nahi maani. Ye bahut badi baat hai.",
     interactions: [
       {
         id: '6-1',
-        question: "How many times did you almost give up?",
+        question: "Kitni baar laga ki ab nahi ho payega?",
         type: 'multiple-choice',
-        options: ["Never", "Once or twice", "More than I'd admit", "Every other week honestly"]
+        options: ["Never", "Ek-do baar", "Jitna bataungi usse zyada", "Har dusre hafte lol"]
       },
       {
         id: '6-2',
-        question: "What was the hardest part of long distance for you?",
+        question: "Long distance ka sabse mushkil part kya tha?",
         type: 'text',
         minLength: 10,
         maxLength: 200
       },
       {
         id: '6-3',
-        question: "Rate our FaceTime game",
+        question: "Humara FaceTime game rate karo",
         type: 'rating',
         maxLength: 5
       },
       {
         id: '6-4',
-        question: "One thing that kept you holding on?",
+        question: "Koi ek cheez jisne tumhe himmat di?",
         type: 'text',
         minLength: 10,
         maxLength: 150
@@ -189,31 +189,31 @@ export const chapters: ChapterData[] = [
   {
     id: 7,
     title: "I Kept Coming Back",
-    message: "Every month, twice a month, I drove to Boston. NH happened twice. Vermont happened once. And Vermont... that's where I gave you the promise ring by the waterfall. That moment? I meant every word.",
+    message: "Har maheene, do baar, main Boston drive karta tha. NH do baar hua, Vermont ek baar. Aur Vermont... wahi waterfall ke paas maine tumhe promise ring di thi. Us moment pe maine jo bhi kaha, mera matlab wahi tha.",
     interactions: [
       {
         id: '7-1',
-        question: "When I showed up in Boston, your first thought was usually:",
+        question: "Jab main Boston aata tha, sabse pehla thought kya hota tha?",
         type: 'multiple-choice',
-        options: ["Finally!", "He actually came", "Time to show him around", "Hope he's not tired from driving"]
+        options: ["Finally!", "He actually came", "Time to show him around", "Hope thaka nahi hoga drive se"]
       },
       {
         id: '7-2',
-        question: "How surprised were you at the waterfall?",
+        question: "Waterfall pe kitni surprised thi?",
         type: 'slider',
-        leftLabel: "Knew it was coming",
-        rightLabel: "Completely shocked"
+        leftLabel: "Pata tha",
+        rightLabel: "Shocked!"
       },
       {
         id: '7-3',
-        question: "What were you thinking when I gave you the ring?",
+        question: "Jab maine ring di, tumhare dimaag mein kya chal raha tha?",
         type: 'text',
         minLength: 10,
         maxLength: 200
       },
       {
         id: '7-4',
-        question: "What does that ring mean to you now?",
+        question: "Wo ring aaj tumhare liye kya maane rakhti hai?",
         type: 'text',
         minLength: 10,
         maxLength: 150
@@ -223,23 +223,23 @@ export const chapters: ChapterData[] = [
   {
     id: 8,
     title: "India & Return",
-    message: "You went to India. And suddenly the distance wasn't just cities — it was continents. Time zones. Missed calls. But you came back. And when you did, it felt like pressing play again.",
+    message: "Tum India gayi. Aur achanak distance sirf cities nahi, continents ban gaya. Time zones, missed calls. Par tum wapas aayi. Aur jab aayi, toh laga jaise sab wapas 'play' ho gaya.",
     interactions: [
       {
         id: '8-1',
-        question: "Did you miss me in India? Rate honestly.",
+        question: "Kya mujhe India mein miss kiya?",
         type: 'rating',
-        maxLength: 5 // 5 hearts
+        maxLength: 5
       },
       {
         id: '8-2',
-        question: "What did you miss most?",
+        question: "Sabse zyada kya miss kiya?",
         type: 'multiple-choice',
-        options: ["The calls", "The visits", "The random texts", "Having someone to rant to", "The drives"]
+        options: ["The calls", "The visits", "The random texts", "Someone to rant to", "The drives"]
       },
       {
         id: '8-3',
-        question: "First thought when you landed back?",
+        question: "Landed back... pehla thought kya tha?",
         type: 'text',
         minLength: 10,
         maxLength: 100
@@ -249,31 +249,31 @@ export const chapters: ChapterData[] = [
   {
     id: 9,
     title: "Acadia Adventure",
-    message: "Acadia National Park. 3 days. Beautiful views. But let's be real — we fought before the trip. We fought after the trip. And somehow, the trip itself? Still one of my favorite memories. That's us. Chaos and beauty, all mixed together.",
+    message: "Acadia National Park. 3 din. Khoobsurat views. Par sach bolun toh, trip se pehle lade, trip ke baad lade. Phir bhi wo trip meri favorite memories mein se ek hai. Yehi hum hain. Thoda chaos aur bahut zyada pyaar.",
     interactions: [
       {
         id: '9-1',
-        question: "The fights before/after — who started most of them?",
+        question: "Fights kaun zyada start karta tha?",
         type: 'multiple-choice',
-        options: ["You (Ajith)", "Me", "Mutual chaos", "The stress of travel"]
+        options: ["Tum (Ajith)", "Main", "Dono ki galti", "Travel ka stress"]
       },
       {
         id: '9-2',
-        question: "What's your favorite memory from Acadia? (Not the fights)",
+        question: "Acadia ki best memory (binna ladai wali)?",
         type: 'text',
         minLength: 10,
         maxLength: 200
       },
       {
         id: '9-3',
-        question: "Was the trip worth the drama?",
+        question: "Trip worth the drama thi?",
         type: 'slider',
-        leftLabel: "Not really",
-        rightLabel: "100% worth it"
+        leftLabel: "Nahi",
+        rightLabel: "100% Worth it"
       },
       {
         id: '9-4',
-        question: "One thing you'd do differently if we went back?",
+        question: "Agar wapas jayein, toh kya badalna chahogi?",
         type: 'text',
         minLength: 5,
         maxLength: 150
@@ -283,30 +283,30 @@ export const chapters: ChapterData[] = [
   {
     id: 10,
     title: "New Beginnings (House, Nashua, Costco Life)",
-    message: "Your new house. The Nashua iPhone trip. The endless Costco and Aldi runs. This chapter isn't dramatic. It's not a waterfall or a national park. But it's real. It's us building a life in the small moments.",
+    message: "Tumhara naya ghar. Nashua iPhone trip. Wo endless Costco aur Aldi runs. Ye chapter dramatic nahi hai. Ye koi waterfall ya park nahi hai. Par ye real hai. Hum choti choti baaton mein apni zindagi bana rahe hain.",
     interactions: [
       {
         id: '10-1',
-        question: "Rank our regular spots:",
+        question: "Humari spots ko rank karo:",
         type: 'ranking',
         options: ["Costco", "Aldi", "Random drives", "Your place"]
       },
       {
         id: '10-2',
-        question: "What's one boring, everyday thing we do that you secretly love?",
+        question: "Koi narmal si cheez jo hum sath karte hain aur tumhe pasand hai?",
         type: 'text',
         minLength: 10,
         maxLength: 150
       },
       {
         id: '10-3',
-        question: "Best impulse purchase we made together?",
+        question: "Sath mein liye hui sabse best impulse purchase?",
         type: 'multiple-choice',
-        options: ["Something from Costco", "The iPhone trip find", "Food we didn't need", "Can't pick one"]
+        options: ["Costco ki koi cheez", "The iPhone trip find", "Food we didn't need", "Can't pick one"]
       },
       {
         id: '10-4',
-        question: "Describe our 'normal' in 5 words or less",
+        question: "Humara 'normal' kaise describe karogi (5 words max)?",
         type: 'text',
         minLength: 2,
         maxLength: 50
@@ -316,31 +316,31 @@ export const chapters: ChapterData[] = [
   {
     id: 11,
     title: "NYC — 64th Floor",
-    message: "NYC. 3 days. That dinner on the 64th floor. You weren't feeling well. You barely saw the city. But you know what I saw? Someone I wanted to take care of. The trip wasn't what we planned. But I'd do it again.",
+    message: "NYC. 3 din. Wo 64th floor wali dinner. Tumhari tabiyat theek nahi thi. Tumne pura sheher nahi dekha. Par maine kya dekha? Someone I wanted to take care of. Trip waisi nahi thi jaisi plan ki thi, par main wapas wahi karunga.",
     interactions: [
       {
         id: '11-1',
-        question: "How sick were you actually? (Be honest)",
+        question: "Sach batao, kitni bimaar thi?",
         type: 'slider',
-        leftLabel: "Slight cold",
+        leftLabel: "Thoda sa",
         rightLabel: "Dying inside"
       },
       {
         id: '11-2',
-        question: "What do you actually remember from that trip?",
+        question: "Us trip se actually kya yaad hai?",
         type: 'text',
         minLength: 10,
         maxLength: 150
       },
       {
         id: '11-3',
-        question: "The 64th floor dinner — worth it despite everything?",
+        question: "64th floor dinner worth it thi?",
         type: 'multiple-choice',
-        options: ["Absolutely yes", "It was okay", "I was too sick to enjoy it", "The view saved it"]
+        options: ["Absolutely yes", "Theek tha", "Bimaar thi bahut", "View ne bacha liya"]
       },
       {
         id: '11-4',
-        question: "If we go back (healthy this time), what's the ONE thing you want to do?",
+        question: "Agar wapas jayein (healthy hoke), toh kya karna chahogi?",
         type: 'text',
         minLength: 10,
         maxLength: 150
@@ -350,38 +350,38 @@ export const chapters: ChapterData[] = [
   {
     id: 12,
     title: "The Chaos & The Love",
-    message: "Let's be real. We've had heavy fights. We've had nights of drinking and talking too much. We've questioned if we're even suited for each other. But Deeksha — you're learning to cook for me. I drive you everywhere. We keep choosing each other. That's not nothing. That's everything.",
+    message: "Sach toh ye hai ki humne bahut lade hain. Bahut baatein ki hain. Kabhi kabhi toh socha bhi hai ki hum sath reh paenge ya nahi. Par Deeksha... tum ab mere liye khana bana rahi ho. Main tumhe har jagah drive karta hoon. Hum ek dusre ko choose kar rahe hain. Ye bahut badi baat hai.",
     interactions: [
       {
         id: '12-1',
-        question: "Our fights — how bad do they actually get?",
+        question: "Humari fights kitni bad hoti hain?",
         type: 'slider',
-        leftLabel: "Minor disagreements",
-        rightLabel: "Full chaos mode"
+        leftLabel: "Choti baatein",
+        rightLabel: "Full chaos!"
       },
       {
         id: '12-2',
-        question: "After a fight, who apologizes first usually?",
+        question: "Ladai ke baad pehle sorry kaun bolta hai?",
         type: 'multiple-choice',
-        options: ["You (Ajith)", "Me", "We both sulk then pretend it didn't happen", "Depends on who was wrong"]
+        options: ["Tum (Ajith)", "Main", "Dono ego mein rehte hain", "Galti kiski thi uspe depend karta hai"]
       },
       {
         id: '12-3',
-        question: "One thing you want us to be better at?",
+        question: "Koi ek cheez jo humein better karni chahiye?",
         type: 'text',
         minLength: 10,
         maxLength: 200
       },
       {
         id: '12-4',
-        question: "One thing you never want to change about us?",
+        question: "Koi ek cheez jo tum kabhi nahi badalna chahti?",
         type: 'text',
         minLength: 10,
         maxLength: 200
       },
       {
         id: '12-5',
-        question: "In one sentence — why do you keep choosing this?",
+        question: "Ek sentence mein... tum ye kyu choose karti ho?",
         type: 'text',
         minLength: 10,
         maxLength: 250
