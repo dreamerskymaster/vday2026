@@ -7,6 +7,7 @@ import { Gate } from "@/components/Gate";
 import { Chapter } from "@/components/Chapter";
 import { ProgressBar } from "@/components/ProgressBar";
 import { FinalScreen } from "@/components/FinalScreen";
+import { MusicPlayer } from "@/components/MusicPlayer";
 import { chapters } from "@/data/chapters";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 
@@ -59,7 +60,8 @@ export default function Home() {
   if (showFinal) {
     return (
       <div className="romantic-gradient min-h-screen">
-        <FinalScreen onFinish={() => window.location.reload()} />
+        <FinalScreen responses={progress.responses} onFinish={() => window.location.reload()} />
+        <MusicPlayer />
       </div>
     );
   }
@@ -68,6 +70,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen pb-20 romantic-gradient selection:bg-primary/20">
+      <MusicPlayer />
       <div className="sticky top-0 z-40 bg-white/40 backdrop-blur-md border-b border-white/20 py-6">
         <ProgressBar 
           totalChapters={chapters.length} 
