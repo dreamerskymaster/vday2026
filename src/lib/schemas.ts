@@ -12,7 +12,7 @@ export const InteractionSchema = z.object({
   rightLabel: z.string().optional(),
   minLength: z.number().optional(),
   maxLength: z.number().optional(),
-  followUps: z.record(z.string()).optional(),
+  followUps: z.record(z.string(), z.string()).optional(),
 });
 
 /**
