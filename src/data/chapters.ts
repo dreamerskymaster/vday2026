@@ -1,7 +1,5 @@
 import { type ChapterData } from "@/lib/schemas";
 
-import { type ChapterData } from "@/lib/schemas";
-
 export const chapters: ChapterData[] = [
   {
     id: 1,
