@@ -6,5 +6,5 @@ export const wrongGuesses = [
   "Arre yaar, hint chahiye kya? 🐕"
 ];
 
-export const GATE_ANSWER = "Lucky";
+export const GATE_ANSWER = "Lucky"; // [SECURITY-REVIEW] Hardcoded secret. Should be moved to process.env.NEXT_PUBLIC_GATE_ANSWER for production.
 export const GATE_HINT = "Okay fine... it starts with 'L' and rhymes with 'Ducky' 🦆";

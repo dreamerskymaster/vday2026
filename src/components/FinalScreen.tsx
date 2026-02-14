@@ -1,11 +1,12 @@
 "use client";
 
+import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui";
-import { Heart } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Heart, Download } from "lucide-react";
 import { useProgress } from "@/hooks/useProgress";
 import { MemoryGallery } from "./MemoryGallery";
+import { toPng } from "html-to-image";
 
 interface FinalScreenProps {
   onFinish: () => void;
@@ -15,7 +16,9 @@ interface FinalScreenProps {
 export function FinalScreen({ onFinish, responses }: FinalScreenProps) {
   const [taps, setTaps] = useState(0);
   const [showExport, setShowExport] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const { exportAnswers } = useProgress();
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   const handleTap = () => {
     setTaps(prev => {
@@ -25,11 +28,49 @@ export function FinalScreen({ onFinish, responses }: FinalScreenProps) {
     });
   };
 
+  const handleDownloadImage = useCallback(async () => {
+    if (!galleryRef.current) return;
+
+    setIsDownloading(true);
+    try {
+      const dataUrl = await toPng(galleryRef.current, {
+        cacheBust: true,
+        backgroundColor: '#ffffff',
+        style: {
+          borderRadius: '0',
+          transform: 'scale(1)',
+        }
+      });
+
+      const link = document.createElement('a');
+      link.download = `Memories-Valentines-2026.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error('Failed to download image:', err);
+    } finally {
+      setIsDownloading(false);
+    }
+  }, []);
+
   return (
-    <div className="min-h-screen py-20 px-6 overflow-y-auto">
+    <div className="min-h-screen py-20 px-6 overflow-y-auto bg-pink-50/30">
       <div className="max-w-4xl mx-auto space-y-16">
         {/* Memory Gallery Section */}
-        <MemoryGallery responses={responses} />
+        <div className="space-y-6">
+          <MemoryGallery ref={galleryRef} responses={responses} />
+
+          <div className="flex justify-center">
+            <button
+              onClick={handleDownloadImage}
+              disabled={isDownloading}
+              className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-primary text-primary rounded-full font-bold hover:bg-primary hover:text-white transition-all shadow-md group disabled:opacity-50"
+            >
+              <Download className={isDownloading ? "animate-bounce" : "group-hover:translate-y-0.5 transition-transform"} size={20} />
+              {isDownloading ? "Creating Memory..." : "Save Memory Strip"}
+            </button>
+          </div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -53,20 +94,20 @@ export function FinalScreen({ onFinish, responses }: FinalScreenProps) {
             </p>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
             className="space-y-8 pt-4 border-t border-accent/20"
           >
             <div className="space-y-3">
               <p className="text-xl text-charcoal/90">February 14th. If you're feeling well...</p>
-              <p className="text-2xl font-bold text-primary tracking-wide">I'd like to take you out.</p>
+              <p className="text-2xl font-bold text-primary tracking-wide italic">"Lets go Out today!"</p>
             </div>
 
             <div className="space-y-2">
               <p className="text-3xl font-heading text-charcoal">Happy Valentine's Day, Deeksha.</p>
               <p className="text-2xl font-handwritten text-secondary">Happy Almost-One-Year.</p>
-              
-              <button 
+
+              <button
                 onClick={handleTap}
                 className="text-xl font-medium pt-8 text-charcoal/30 hover:text-primary transition-colors cursor-default"
               >

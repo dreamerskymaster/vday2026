@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "./ui";
 import { InteractionHub } from "./TaskInteractions";
-import { Sparkles, Heart } from "lucide-react";
+import { Sparkles, Heart, Camera } from "lucide-react";
 import confetti from "canvas-confetti";
+import Image from "next/image";
 
 interface ChapterProps {
   chapter: any;
@@ -70,7 +71,7 @@ export function Chapter({ chapter, onChapterComplete, onInteractionStep }: Chapt
       </AnimatePresence>
 
       <div className="text-center space-y-4">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="flex justify-center items-center gap-2"
@@ -81,7 +82,7 @@ export function Chapter({ chapter, onChapterComplete, onInteractionStep }: Chapt
           </p>
           <div className="h-px w-8 bg-primary/30" />
         </motion.div>
-        
+
         <h2 className="text-3xl md:text-5xl font-heading text-charcoal min-h-[1.2em]">
           {chapter.title.split('').map((char: string, i: number) => (
             <motion.span
@@ -97,14 +98,35 @@ export function Chapter({ chapter, onChapterComplete, onInteractionStep }: Chapt
       </div>
 
       <Card className="relative overflow-visible group">
-        <div className="absolute -top-4 -right-4 bg-secondary p-3 rounded-2xl shadow-lg -rotate-12 group-hover:rotate-0 transition-transform duration-500">
+        <div className="absolute -top-4 -right-4 bg-secondary p-3 rounded-2xl shadow-lg -rotate-12 group-hover:rotate-0 transition-transform duration-500 z-20">
           <Sparkles className="w-6 h-6 text-white" />
         </div>
-        
+
         <div className="space-y-8">
+          {chapter.photo && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ delay: 0.3 }}
+              className="relative aspect-video w-full overflow-hidden rounded-xl border-8 border-white shadow-md mb-8 group/photo"
+            >
+              <Image
+                src={chapter.photo}
+                alt={chapter.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover/photo:scale-110"
+                priority
+              />
+              <div className="absolute inset-0 bg-black/5" />
+              <div className="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-sm">
+                <Camera size={16} className="text-primary" />
+              </div>
+            </motion.div>
+          )}
+
           <div className="space-y-4">
             {chapter.message.split('. ').map((para: string, i: number) => (
-              <motion.p 
+              <motion.p
                 key={i}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -116,7 +138,7 @@ export function Chapter({ chapter, onChapterComplete, onInteractionStep }: Chapt
             ))}
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2 }}

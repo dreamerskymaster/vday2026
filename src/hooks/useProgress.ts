@@ -1,23 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { ProgressSchema, type Progress, type ResponseData } from "@/lib/schemas";
 
 const STORAGE_KEY = "lucky_valentines_app";
-
-interface ResponseData {
-  answers: { question: string, answer: any }[];
-  timestamp: string;
-}
-
-interface Progress {
-  gatePassed: boolean;
-  wrongAttempts: number;
-  currentChapter: number;
-  unlockedChapters: number[];
-  responses: Record<number, ResponseData>; // chapterNumber -> data
-  completedAt: string | null;
-  dateConfirmed: boolean;
-}
 
 const defaultState: Progress = {
   gatePassed: false,
@@ -38,9 +24,20 @@ export function useProgress() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
-        setProgress(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        const result = ProgressSchema.safeParse(parsed);
+        
+        if (result.success) {
+          setProgress(result.data);
+        } else {
+          console.error("Progress validation failed", result.error);
+          // Fallback to default if data is corrupted
+          localStorage.removeItem(STORAGE_KEY);
+          setProgress(defaultState);
+        }
       } catch (e) {
         console.error("Failed to parse progress", e);
+        setProgress(defaultState);
       }
     }
     setLoading(false);
@@ -75,25 +72,45 @@ export function useProgress() {
     setProgress((prev) => ({ ...prev, currentChapter: chapterId }));
   };
 
+  const syncToGitHub = async (updatedProgress: Progress) => {
+    try {
+      await fetch("/api/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedProgress),
+      });
+    } catch (e) {
+      console.error("Failed to sync to GitHub", e);
+    }
+  };
+
   const saveChapterResponse = (chapterId: number, answers: { question: string, answer: any }[]) => {
-    setProgress((prev) => ({
-      ...prev,
-      responses: {
-        ...prev.responses,
-        [chapterId]: {
-          answers,
-          timestamp: new Date().toISOString()
+    setProgress((prev) => {
+      const next = {
+        ...prev,
+        responses: {
+          ...prev.responses,
+          [chapterId]: {
+            answers,
+            timestamp: new Date().toISOString()
+          }
         }
-      }
-    }));
+      };
+      syncToGitHub(next);
+      return next;
+    });
   };
 
   const completeApp = () => {
-    setProgress((prev) => ({ 
-      ...prev, 
-      completedAt: new Date().toISOString(),
-      dateConfirmed: true 
-    }));
+    setProgress((prev) => {
+      const next = { 
+        ...prev, 
+        completedAt: new Date().toISOString(),
+        dateConfirmed: true 
+      };
+      syncToGitHub(next);
+      return next;
+    });
   };
 
   const exportAnswers = () => {
